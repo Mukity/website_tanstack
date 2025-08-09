@@ -29,9 +29,7 @@ export default defineConfig({
   },
   server: {
     allowedHosts: [
-      /^localhost$/,                     // allow localhost
-      /^phosnoaz\.com$/,                  // allow exact domain
-      /^([a-z0-9-]+\.)*phosnoaz\.com$/,   // allow any subdomain
+        "test.phosnoaz.com"
     ],
   },
 });
