@@ -27,9 +27,7 @@ export default defineConfig({
   plugins: basePlugins,
   server: {
     // Allow only phosnoaz.com and its subdomains
-    allowedHosts: [
-      ".phosnoaz.com"
-    ]
+    allowedHosts: true
   },
   build: {
     sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
