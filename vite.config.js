@@ -2,11 +2,12 @@ import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
+
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
 const basePlugins = [
-  TanStackRouterVite({ autoCodeSplitting: true }),
-  viteReact(),
+  TanStackRouterVite({ autoCodeSplitting: true }), 
+  viteReact(), 
   tailwindcss(),
 ];
 
@@ -21,17 +22,11 @@ if (process.env.SENTRY_AUTH_TOKEN) {
   );
 }
 
-export default defineConfig(({ command }) => {
-  const isDev = command === "serve";
-
-  return {
-    plugins: basePlugins,
-    server: {
-      host: true,
-      allowedHosts: "all",
-    },
-    build: {
-      sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
-    },
-  };
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: basePlugins,
+  build: {
+    // Only generate source maps if Sentry is enabled
+    sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
+  },
 });
