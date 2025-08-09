@@ -2,12 +2,11 @@ import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
-
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
 const basePlugins = [
-  TanStackRouterVite({ autoCodeSplitting: true }), 
-  viteReact(), 
+  TanStackRouterVite({ autoCodeSplitting: true }),
+  viteReact(),
   tailwindcss(),
 ];
 
@@ -29,10 +28,10 @@ export default defineConfig({
     sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
   },
   server: {
-    // Allow only phosnoaz.com and its subdomains
     allowedHosts: [
-      (host) => host.endsWith(".phosnoaz.com") ||
-      host === "phosnoaz.com"
-    ]
-  }
+      /^localhost$/,                     // allow localhost
+      /^phosnoaz\.com$/,                  // allow exact domain
+      /^([a-z0-9-]+\.)*phosnoaz\.com$/,   // allow any subdomain
+    ],
+  },
 });
