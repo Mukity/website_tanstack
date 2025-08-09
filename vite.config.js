@@ -26,7 +26,13 @@ if (process.env.SENTRY_AUTH_TOKEN) {
 export default defineConfig({
   plugins: basePlugins,
   build: {
-    // Only generate source maps if Sentry is enabled
     sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
   },
+  server: {
+    // Allow only phosnoaz.com and its subdomains
+    allowedHosts: [
+      (host) => host.endsWith(".phosnoaz.com") ||
+      host === "phosnoaz.com"
+    ]
+  }
 });
