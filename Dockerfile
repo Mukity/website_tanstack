@@ -2,12 +2,12 @@ FROM node:current-alpine3.22
 
 ENV NODE_ENV=production
 
-RUN git clone git@github.com:Mukity/website.git
+COPY . /website_tanstack
 
-WORKDIR website
+WORKDIR /website_tanstack
 
 RUN npm install
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "dev" ]
+CMD npm run dev
