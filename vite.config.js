@@ -25,13 +25,13 @@ if (process.env.SENTRY_AUTH_TOKEN) {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: basePlugins,
-  build: {
-    sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
-  },
   server: {
     // Allow only phosnoaz.com and its subdomains
     allowedHosts: [
       ".phosnoaz.com"
     ]
+  },
+  build: {
+    sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
   }
 });
