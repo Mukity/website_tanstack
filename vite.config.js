@@ -27,12 +27,8 @@ export default defineConfig(({ command }) => {
   return {
     plugins: basePlugins,
     server: {
-      allowedHosts: isDev
-        ? "all" // Allow any host in dev mode
-        : [
-            "phosnoaz.com",
-            /^.*\.phosnoaz\.com$/, // Allow any subdomain
-          ],
+      host: true,
+      allowedHosts: "all",
     },
     build: {
       sourcemap: !!process.env.SENTRY_AUTH_TOKEN,
