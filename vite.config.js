@@ -13,6 +13,6 @@ const basePlugins = [
 export default defineConfig({
   plugins: basePlugins,
   server: {
-    "allowedHosts": true
-  }
+    "allowedHosts": true,
+  },
 });
