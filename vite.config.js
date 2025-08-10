@@ -35,4 +35,10 @@ export default defineConfig({
     ],
     host: true,
   },
+  dev: {
+    allowedHosts: [
+      '.phosnoaz.com'
+    ],
+    host: true,
+  },
 });
